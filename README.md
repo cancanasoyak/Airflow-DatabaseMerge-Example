@@ -8,6 +8,13 @@ Be sure you have folders are present:
 	- ./logs
 	- ./plugins
 
+On Linux, the quick-start needs to know your host user id and needs to have group id set to 0. Otherwise the files created in dags, logs and plugins will be created with root user ownership. You have to make sure to configure them for the docker-compose, run:
+
+	mkdir -p ./dags ./logs ./plugins ./config
+	echo -e "AIRFLOW_UID=$(id -u)" > .env
+
+For other operating systems, you may get a warning that AIRFLOW_UID is not set, but you can safely ignore it.
+
 This repository already has them but be sure they are present:
 	- ./data
 	- ./data/tmp
